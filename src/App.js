@@ -1,11 +1,11 @@
 import React from "react";
-import Cartitem from './Components/Cartitem'
+import Cart from './Components/Cart'
+
 
 function App() {
   return (
     <div className="App">
-    <h1> Welcome to Prolance Cart</h1>
-    <Cartitem/>
+    <Cart/>
     </div>
   );
 }

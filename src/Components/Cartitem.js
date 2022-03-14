@@ -14,20 +14,26 @@ class Cartitem extends React.Component {
 
   handleIncreaseQuantity = () => {
     //console.log("Quantity added", this.state);
-    this.setState({
-      qty: this.state.qty + 1,
-    }, () => {
-        console.log(this.state)
-    });
+    this.setState(
+      {
+        qty: this.state.qty + 1,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
 
   handleDecreaseQuantity = () => {
-    if (this.state.qty == 0) return;
-    this.setState({
-      qty: this.state.qty - 1,
-    }, () => {
-        console.log(this.state)
-    });
+    if (this.state.qty === 0) return;
+    this.setState(
+      {
+        qty: this.state.qty - 1,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
   render() {
     const { title, price, qty } = this.state;
