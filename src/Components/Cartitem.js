@@ -15,15 +15,20 @@ class Cartitem extends React.Component {
   handleIncreaseQuantity = () => {
     //console.log("Quantity added", this.state);
     this.setState({
-        qty: this.state.qty + 1
-    }) 
+      qty: this.state.qty + 1,
+    }, () => {
+        console.log(this.state)
+    });
   };
 
   handleDecreaseQuantity = () => {
-      this.setState({
-          qty: this.state.qty - 1
-      })
-  }
+    if (this.state.qty == 0) return;
+    this.setState({
+      qty: this.state.qty - 1,
+    }, () => {
+        console.log(this.state)
+    });
+  };
   render() {
     const { title, price, qty } = this.state;
     return (
@@ -47,7 +52,7 @@ class Cartitem extends React.Component {
               alt="decrease"
               className="action-icons"
               src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/1000_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg"
-              onClick = {this.handleDecreaseQuantity}
+              onClick={this.handleDecreaseQuantity}
             />
             <img
               alt="delete"
