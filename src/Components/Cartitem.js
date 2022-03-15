@@ -1,14 +1,13 @@
 import React from "react";
 
 class Cartitem extends React.Component {
-
   render() {
-    console.log(this.props)
-    const { title, price, qty } = this.props.product
+    console.log(this.props);
+    const { title, price, qty, img } = this.props.product;
     return (
       <div className="cart-item">
         <div className="left-block">
-          <img style={styles.image} alt="not loaded" />
+          <img style={styles.image} alt="not loaded" src={img}/>
         </div>
         <div className="right-block">
           <div style={{ color: "#111", fontSize: 45 }}>{title}</div>
@@ -21,13 +20,12 @@ class Cartitem extends React.Component {
               className="action-icons"
               src="https://as2.ftcdn.net/v2/jpg/00/70/16/29/1000_F_70162903_5mFpUbO3ZfRyD4gslH8j2c5VxjGMKU9G.jpg"
               onClick={() => this.props.onIncreaseQty(this.props.product)}
-            
             />
             <img
               alt="decrease"
               className="action-icons"
               src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/1000_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg"
-              onClick={this.handleDecreaseQuantity}
+              onClick={() => this.props.onDecreaseQty(this.props.product)}
             />
             <img
               alt="delete"
@@ -42,8 +40,8 @@ class Cartitem extends React.Component {
 }
 const styles = {
   image: {
-    height: 110,
-    width: 110,
+    height: 200,
+    width: 210,
     borderRadius: 4,
     backgroundColor: "#ccc",
   },
