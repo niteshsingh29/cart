@@ -1,6 +1,7 @@
 import React from "react";
 
 const Navbar = (props) => {
+    
   return (
     <>
       <div style={styles.nav}>
@@ -8,10 +9,11 @@ const Navbar = (props) => {
         <div style={styles.cartIconContainer}>
           <img
             style={styles.cartIcon}
-            src="https://cdn-icons.flaticon.com/png/512/2838/premium/2838895.png?token=exp=1647362337~hmac=e5fa1c2b949099566cbe485df3869fac"
+            src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
             alt="not loaded"
+            
           />
-          <span style={styles.cartCount}>3</span>
+          <span style={styles.cartCount}> {props.count} </span>
         </div>
       </div>
     </>
