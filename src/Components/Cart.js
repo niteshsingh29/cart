@@ -75,9 +75,7 @@ class Cart extends React.Component {
   };
   handleDeleteItem = (id) => {
     const { products } = this.state;
-    console.log(id)
     const items = products.filter((item) => item.id !== id.id);
-    console.log(items)
     this.setState({
       products: items,
     });
