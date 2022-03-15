@@ -1,32 +1,10 @@
 import React from "react";
 
 class Cartitem extends React.Component {
-  handleIncreaseQuantity = () => {
-    //console.log("Quantity added", this.state);
-    this.setState(
-      {
-        qty: this.state.qty + 1,
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
-  };
 
-  handleDecreaseQuantity = () => {
-    if (this.state.qty === 0) return;
-    this.setState(
-      {
-        qty: this.state.qty - 1,
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
-  };
   render() {
     console.log(this.props)
-    const { title, price, qty } = this.props.product;
+    const { title, price, qty } = this.props.product
     return (
       <div className="cart-item">
         <div className="left-block">
@@ -42,7 +20,8 @@ class Cartitem extends React.Component {
               alt="increase"
               className="action-icons"
               src="https://as2.ftcdn.net/v2/jpg/00/70/16/29/1000_F_70162903_5mFpUbO3ZfRyD4gslH8j2c5VxjGMKU9G.jpg"
-              onClick={this.handleIncreaseQuantity}
+              onClick={() => this.props.onIncreaseQty(this.props.product)}
+            
             />
             <img
               alt="decrease"
