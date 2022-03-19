@@ -1,6 +1,9 @@
 import React from "react";
 import Cart from "./Components/Cart";
 import Navbar from "./Components/Navbar";
+import firebase from "./firebase/index";
+// import "firebase/firestore";
+
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +15,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    
+    firebase
+      .collection("products")
+      .get()
+      .then((snapshot) => {
+        console.log(snapshot);
+      });
   }
 
   handleIncreaseQty = (product) => {
@@ -56,9 +64,9 @@ class App extends React.Component {
     products.map((element) => {
       count = count + element.qty * element.price;
       return count;
-    })
+    });
     return count;
-  }
+  };
 
   render() {
     const { products } = this.state;
@@ -72,7 +80,9 @@ class App extends React.Component {
             onDecreaseQty={this.handleDecreaseQty}
             onDeleteItem={this.handleDeleteItem}
           />
-          <div className="total" style={{fontSize: 30, margin: 30}}>TOTAL: {this.updateCartTotal()}</div>
+          <div className="total" style={{ fontSize: 30, margin: 30 }}>
+            TOTAL: {this.updateCartTotal()}
+          </div>
         </div>
       </>
     );
