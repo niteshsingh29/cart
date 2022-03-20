@@ -2,7 +2,7 @@ import React from "react";
 import Cartitem from "./Cartitem";
 
 const Cart = (props) => {
-  const { products } = props;
+  const { products, loading } = props;
   return (
     <div className="cart">
       <h1> Welcome to Prolance Cart</h1>
@@ -17,6 +17,7 @@ const Cart = (props) => {
           />
         );
       })}
+      {loading && <h1>PLease Wait Loading....</h1>}
     </div>
   );
 };

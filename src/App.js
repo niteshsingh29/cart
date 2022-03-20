@@ -10,14 +10,14 @@ class App extends React.Component {
 
     this.state = {
       products: [],
+      loading: true,
     };
   }
 
   componentDidMount() {
     firebase
       .collection("products")
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         const products = snapshot.docs.map((doc) => {
           const data = doc.data();
 
@@ -26,7 +26,10 @@ class App extends React.Component {
           return data;
         });
 
-        this.setState({ products: products });
+        this.setState({ 
+          products: products,
+          loading: false
+         });
       });
   }
 
@@ -77,7 +80,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { products } = this.state;
+    const { products, loading } = this.state;
     return (
       <>
         <div className="App">
@@ -87,6 +90,7 @@ class App extends React.Component {
             onIncreaseQty={this.handleIncreaseQty}
             onDecreaseQty={this.handleDecreaseQty}
             onDeleteItem={this.handleDeleteItem}
+            loading={loading}
           />
           <div className="total" style={{ fontSize: 30, margin: 30 }}>
             TOTAL: {this.updateCartTotal()}
