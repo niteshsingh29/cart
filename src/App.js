@@ -4,7 +4,6 @@ import Navbar from "./Components/Navbar";
 import firebase from "./firebase/index";
 // import "firebase/firestore";
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -19,7 +18,15 @@ class App extends React.Component {
       .collection("products")
       .get()
       .then((snapshot) => {
-        console.log(snapshot);
+        const products = snapshot.docs.map((doc) => {
+          const data = doc.data();
+
+          data["id"] = doc.id;
+
+          return data;
+        });
+
+        this.setState({ products: products });
       });
   }
 
@@ -53,8 +60,9 @@ class App extends React.Component {
   count = () => {
     const { products } = this.state;
     let count = 0;
-    products.forEach((element) => {
+    products.map((element) => {
       count += element.qty;
+      return count;
     });
     return count;
   };
